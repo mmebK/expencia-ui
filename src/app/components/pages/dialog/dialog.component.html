@@ -1,0 +1,100 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<form [formGroup]="dialogForm">
+  <button (click)="onCloseForm()" style="float: right;" mat-icon-button color="warn"
+          aria-label="Example icon button with a home icon">
+    <mat-icon>close</mat-icon>
+  </button>
+  <br>
+  <section class="section-content padding-y">
+
+    <!-- ============================ COMPONENT REGISTER   ================================= -->
+    <div class="card mx-auto"
+         style="max-width:750px; min-width: 200px;max-height: 700px; margin-top:20px; overflow: auto">
+
+
+      <article class="card-body col">
+        <header class="mb-4"><h2 class="card-title">Enter the information about the transaction</h2></header>
+
+
+        <label id="example-radio-group-label">Transaction Type:</label>
+        <div class="form-row">
+
+          <mat-radio-group formControlName="type"
+                           aria-label="type">
+
+
+            <mat-radio-button class="form-group col-md-6"
+                              (change)="changeCategories($event)"
+                              *ngFor="let operationType of types| keyvalue"
+                              [value]=operationType.key>{{operationType.value}}</mat-radio-button>
+
+
+          </mat-radio-group>
+        </div>
+        <div class="form-row">
+
+
+          <mat-form-field class="col form-group" appearance="outline">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="category">
+              <mat-option *ngFor="let category of categories | keyvalue"
+                          [value]=category.key>{{category.value}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="dialogForm.get('category')?.hasError('required')">
+              Description is required.
+            </mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field class="col form-group" appearance="outline">
+            <mat-label>Amount</mat-label>
+            <input class="example-right-align" type="number" formControlName="amount" matInput>
+            <span matPrefix>€&nbsp;</span>
+            <mat-error *ngIf="dialogForm.get('amount')?.hasError('required')">
+              Description is required.
+            </mat-error>
+          </mat-form-field>
+
+
+        </div> <!-- form-row end.// -->
+        <div class="form-row">
+
+          <mat-form-field class="form-group col" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea formControlName="description" matInput placeholder="description"></textarea>
+            <mat-error *ngIf="dialogForm.get('description')?.hasError('required')">
+              Description is required.
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+
+        <label>Payment type:</label>
+
+        <div class="form-row" style="justify-items: stretch">
+
+          <mat-radio-group formControlName="paymentMode"
+                           aria-label="Payment mode">
+
+
+            <mat-radio-button class=" form-group col-md-3 " style="justify-self: center"
+                              *ngFor="let paymentOpt of paymentModes | keyvalue"
+                              [value]=paymentOpt.key>{{paymentOpt.value}}</mat-radio-button>
+
+
+          </mat-radio-group>
+        </div>
+        <br><br>
+
+        <div class="form-group">
+          <button class=" btn-block" (click)="onSubmitForm()" [disabled]="!dialogForm.valid" mat-raised-button
+                  color="primary">submit
+          </button>
+        </div>
+
+      </article>
+    </div>
+
+
+  </section>
+</form>

@@ -1,1 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+input.example-right-align::-webkit-outer-spin-button,
+input.example-right-align::-webkit-inner-spin-button {
+  display: none;
+}
+
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+
+/*.mat-form-field-appearance-outline .mat-form-field-prefix {
+  top: 0.15em !important
+}*/
+
+.olde.mat-form-field-appearance-outline .mat-form-field-suffix {
+  top: 0;
+}
+
+.mat-form-field-appearance-outline .mat-form-field-prefix,
+.mat-form-field-appearance-outline .mat-form-field-suffix {
+  place-self: center;
+}

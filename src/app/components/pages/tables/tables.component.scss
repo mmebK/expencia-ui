@@ -1,0 +1,87 @@
+.bg-gradient-danger {
+  background: linear-gradient(87deg, #000000 0, #ff2a0d 100%) !important;
+}
+
+.row.card-header.border-0 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 15px;
+  margin-left: 15px;
+}
+
+
+/*.cell {
+  max-width: 50px; !* tweak me please *!
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.expand-small-on-hover:hover {
+  max-width: 200px;
+  text-overflow: ellipsis;
+}*/
+
+/*td {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+table {
+  width: 100%;
+}
+
+td {
+  max-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}*/
+
+
+/*table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  border: 1px solid red;
+}*/
+
+
+/*table {
+  table-layout: fixed;
+}
+
+td {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}*/
+
+
+table td.cell {
+  max-width: 100px;
+
+}
+
+table td.cell span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: inline-block;
+  max-width: 100%;
+}
+
+table td.cell:hover span:not(.empty) {
+  overflow: visible;
+  white-space: normal;
+  height: auto;
+  position: relative;
+}
+
+

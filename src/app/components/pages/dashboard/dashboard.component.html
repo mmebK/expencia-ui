@@ -1,0 +1,200 @@
+<div *ngIf="infos" class="header bg-gradient-danger pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Balance</h5>
+                  <span class="h2 font-weight-bold mb-0">{{infos.balance |currency:"EUR":"symbol"}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
+                    <i class="fas fa-wallet"></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Income</h5>
+                  <span class="h2 font-weight-bold mb-0">{{infos.income |currency:"EUR":"symbol"}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
+                    <i class="fas fa-hand-holding-usd"></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Expenses</h5>
+                  <span class="h2 font-weight-bold mb-0">{{infos.expenses |currency:"EUR":"symbol"}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                    <i class="fas fa-donate"></i>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+          <div class="card card-stats mb-4 mb-xl-0">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <h5 class="card-title text-uppercase text-muted mb-0">Transactions</h5>
+                  <span class="h2 font-weight-bold mb-0">{{infos.transactions}}</span>
+                </div>
+                <div class="col-auto">
+                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
+                    <img src="assets/img/icons/money-svgrepo-com.svg" class="fas fa-percent">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid mt--7">
+  <div class="row mt-5">
+    <div class="col-xl-8 mb-5 mb-xl-0">
+      <div class="card bg-gradient-default shadow">
+        <div class="card-header bg-transparent">
+          <div class="row align-items-center">
+            <div class="col">
+              <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+              <h2 class="text-white mb-0">Balance</h2>
+            </div>
+
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Chart -->
+          <div class="chart">
+            <!-- Chart wrapper -->
+            <canvas id="balance-chart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-4">
+      <div class="card shadow">
+        <div class="card-header bg-transparent">
+          <div class="row align-items-center">
+            <div class="col">
+              <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
+              <h2 class="mb-0">Expenses</h2>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Chart -->
+          <div class="chart">
+            <canvas id="expense-chart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card bg-gradient-default shadow ">
+        <div class="card-header bg-transparent">
+          <div class="row align-items-center">
+            <div class="col">
+              <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
+              <h2 class="text-white mb-0">Balance</h2>
+            </div>
+
+          </div>
+        </div>
+        <div class="card-body">
+          <!-- Chart -->
+          <div class="chart">
+            <!-- Chart wrapper -->
+            <canvas id="allExpenses-chart" class="chart-canvas"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-5 ">
+    <div class="col-xl-12 mb-5 mb-xl-0">
+      <div class="card shadow" style="margin-bottom: 25px">
+        <div class="card-header border-0">
+          <div class="row align-items-center">
+            <div class="col">
+              <h3 class="mb-0">Transactions</h3>
+            </div>
+            <div class="col text-right">
+              <a (click)="seeAllTransactions()" class="btn btn-sm btn-primary">See all</a>
+            </div>
+          </div>
+        </div>
+        <div class="table-responsive">
+          <!-- Projects table -->
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">Date</th>
+              <th scope="col">Payment Mode</th>
+              <th scope="col">Description</th>
+              <th scope="col">Amount</th>
+              <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody *ngIf="transactions">
+            <tr *ngFor="let item of transactions">
+              {{fill(item.category)}}
+              <th scope="row">
+                <a class="icon icon-shape  text-white rounded-circle shadow mr-2">
+                  <img [src]=categoryIcon>
+                </a>
+                {{item.category}}
+              </th>
+              <td>
+                {{item.operationDate | date:'yy-M-d, h:mm'}}
+              </td>
+              <td>
+                {{item.paymentMode}}
+              </td>
+              <td>
+                {{item.description}}
+              </td>
+              <td>
+                {{item.amount |currency:"EUR":"symbol"}}
+              </td>
+            </tr>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
